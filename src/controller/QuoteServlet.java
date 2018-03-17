@@ -39,6 +39,7 @@ public class QuoteServlet extends HttpServlet {
 		List <Quotes> listOfQuotes=new ArrayList<>();
 		QuoteBO quotesBo=new QuoteBO();
 		listOfQuotes=quotesBo.getListOfQuotes();
+		
 		String json=new Gson().toJson(listOfQuotes);
 		
 		

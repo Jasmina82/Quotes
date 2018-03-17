@@ -27,7 +27,13 @@ public class ConnectionManager {
 
 	private boolean openConnection() {
 		try {
-			
+			// load and register JDBC driver for MySQL
+			try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			}catch(ClassNotFoundException e) {
+				System.out.println("Exception here");
+			}
+
 			connection = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 			return true;
 		} catch (SQLException e) {
@@ -36,7 +42,7 @@ public class ConnectionManager {
 		}
 	}
 
-	public Connection getConnection() {
+	public Connection getConnection()  {
 		if (connection == null) {
 			if (openConnection()) {
 				return connection;
